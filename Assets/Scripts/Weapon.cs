@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float damage = 20;
-    [SerializeField] private float force = 155;
+    [SerializeField] private int damage = 20;
     [SerializeField] private float range = 200;
     [SerializeField] private AudioClip shotSFX;
     [SerializeField] private AudioSource _audioSource;
@@ -18,7 +17,7 @@ public class Weapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -35,10 +34,8 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(_cam.transform.position,_cam.transform.forward, out hit, range))
         {
             Debug.Log("Попадание");
-            if (hit.rigidbody != null)
-            {
-                hit.rigidbody.AddForce(-hit.normal * force);
-            }
+                var enemy = hit.rigidbody.GetComponent<MyEnemy>();
+                enemy.Hurt(damage);
         }
     }
 }

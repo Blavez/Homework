@@ -37,7 +37,7 @@ public class MouseLook : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (axes == RotationAxes.MouseXandY)
         {

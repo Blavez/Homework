@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector3 dir;
 
-    void FixedUpdate()
+    void Update()
     {
         transform.Translate(speed * dir * Time.deltaTime);
     }
