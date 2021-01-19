@@ -13,7 +13,6 @@ public class SpawnEnemy : MonoBehaviour
         StartCoroutine(SpawmCD());
     }
 
-    // Update is called once per frame
     void Repeat()
     {
         StartCoroutine(SpawmCD());
