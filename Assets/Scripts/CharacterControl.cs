@@ -24,9 +24,13 @@ public class CharacterControl : MonoBehaviour
             moveDir = transform.TransformDirection(moveDir);
             moveDir *= speed;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && (controller.isGrounded)&&(!Input.GetKey(KeyCode.LeftShift)))
         {
             moveDir.y = jumpSpeed;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && controller.isGrounded)
+        {
+            moveDir *= speed*1.1f;
         }
         moveDir.y -= gravity * Time.deltaTime;
         controller.Move(moveDir * Time.deltaTime);
